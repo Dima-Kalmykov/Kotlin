@@ -33,6 +33,7 @@ fun demonstrateGeneralFunctionality(cars: List<Car>) {
 
 fun demonstrateTruckFunctionality(truck: Truck) {
     truck.deliverThings()
+    truck.deliverThings("boxes")
 }
 
 fun demonstrateBusFunctionality(bus: Bus) {

@@ -18,6 +18,10 @@ class Truck(
         println("Truck delivers things to destination")
     }
 
+    fun deliverThings(product : Any) {
+        println("Truck delivers $product to destination")
+    }
+
     override fun getInfo(): String {
         return super.getInfo() + ", type = $carType, capacity = $capacity"
     }
