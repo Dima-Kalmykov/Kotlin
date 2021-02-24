@@ -2,8 +2,8 @@ package ru.tinkoff.fintech.oop
 
 fun main() {
     val truck = Truck(150, 140, 3000, 17)
-    val bus = Bus(140, 160, 7000, 20)
-    val racer = Racer(70, 250, 10000, 0)
+    val bus = Bus(140, 160, 20)
+    val racer = Racer(70, 250, 10000)
 
     val cars = listOf(truck, bus, racer)
 
