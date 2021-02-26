@@ -30,7 +30,7 @@ fun demonstrateQueueFunctionality() {
     queue.dequeue()
     println("Current queue: $queue\n")
     println("Add 4 to queue")
-    queue += 4 // equivalent for queue.push(4)
+    queue += 4 // equivalent for queue.enqueue(4)
     println("Current queue: $queue\n")
     println("Get front value of queue: ${queue.peek()}\n")
     println("Let's double all values")
