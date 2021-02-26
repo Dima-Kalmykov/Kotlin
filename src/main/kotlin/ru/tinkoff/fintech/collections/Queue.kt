@@ -21,7 +21,7 @@ class Queue<T>(data: List<T> = emptyList()) {
     /**
      * Current size of queue.
      */
-    val size : Int
+    val size: Int
         get() = _data.size
 
     fun isEmpty(): Boolean {
@@ -79,6 +79,6 @@ class Queue<T>(data: List<T> = emptyList()) {
             return ""
         }
 
-        return "front -> " + _data.joinToString(" -> ") + " <- back"
+        return "front -> ${_data.joinToString(" -> ")} <- back"
     }
 }

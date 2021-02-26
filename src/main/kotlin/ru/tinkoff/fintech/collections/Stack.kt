@@ -78,6 +78,6 @@ class Stack<T>(data: List<T> = emptyList()) {
             return ""
         }
 
-        return "top -> " + _data.reversed().joinToString(" -> ")
+        return "top -> ${_data.reversed().joinToString(" -> ")}"
     }
 }
