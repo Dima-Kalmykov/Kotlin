@@ -9,7 +9,7 @@ internal class QueueTest {
 
     @Test
     @DisplayName("queueOf() test")
-    fun stackOfTest() {
+    fun queueOfTest() {
         val intQueue = queueOf(1, 2, 3, 4)
         assertEquals("front -> 1 -> 2 -> 3 -> 4 <- back", intQueue.toString())
         val stringQueue = queueOf(listOf("Hello", "world"))
@@ -56,7 +56,7 @@ internal class QueueTest {
 
     @Test
     @DisplayName("Enqueue test")
-    fun pushTest() {
+    fun enqueueTest() {
         val queue = queueOf(1, 2, 3)
         queue.enqueue(2)
         assertEquals("front -> 1 -> 2 -> 3 -> 2 <- back", queue.toString())
@@ -73,7 +73,7 @@ internal class QueueTest {
 
     @Test
     @DisplayName("Dequeue test")
-    fun popTest() {
+    fun dequeueTest() {
         val queue = queueOf(4, 2, 1)
         assertEquals(4, queue.dequeue())
         assertEquals("front -> 2 -> 1 <- back", queue.toString())
