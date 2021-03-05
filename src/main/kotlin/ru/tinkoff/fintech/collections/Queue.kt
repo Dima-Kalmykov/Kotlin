@@ -59,11 +59,16 @@ class Queue<T>(data: List<T> = emptyList()) {
     }
 
     /**
-     * Apply transform function to each item in queue.
+     * Apply transform function to each item in queue and return the new one.
      * @param transform conversion function
+     * @return new queue with transformed data
      */
-    fun map(transform: (T) -> T) {
-        _data = _data.map(transform).toMutableList()
+    fun map(transform: (T) -> T): Queue<T> {
+        val newData = _data
+            .map(transform)
+            .toMutableList()
+
+        return Queue(newData)
     }
 
     /**

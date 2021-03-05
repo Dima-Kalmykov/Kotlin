@@ -18,8 +18,8 @@ fun demonstrateStackFunctionality() {
     println("Current stack: $stack\n")
     println("Get top value of stack: ${stack.peek()}\n")
     println("Let's double all values")
-    stack.map { it * 2 }
-    println("Current stack: $stack\n")
+    val newStack = stack.map { it * 2 }
+    println("New stack: $newStack\n")
 }
 
 fun demonstrateQueueFunctionality() {
@@ -34,6 +34,6 @@ fun demonstrateQueueFunctionality() {
     println("Current queue: $queue\n")
     println("Get front value of queue: ${queue.peek()}\n")
     println("Let's double all values")
-    queue.map { it * 2 }
-    println("Current queue: $queue\n")
+    val newQueue = queue.map { it * 2 }
+    println("New queue: $newQueue\n")
 }

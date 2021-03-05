@@ -20,10 +20,10 @@ internal class QueueTest {
     @DisplayName("Map test")
     fun mapTest() {
         val queue = queueOf(1, 2, 3)
-        queue.map { it * 2 }
-        assertEquals("front -> 2 -> 4 -> 6 <- back", queue.toString())
-        queue.map { it + 1 }
-        assertEquals("front -> 3 -> 5 -> 7 <- back", queue.toString())
+        val newQueue1 = queue.map { it * 2 }
+        assertEquals("front -> 2 -> 4 -> 6 <- back", newQueue1.toString())
+        val newQueue2 = newQueue1.map { it + 1 }
+        assertEquals("front -> 3 -> 5 -> 7 <- back", newQueue2.toString())
     }
 
     @Test

@@ -20,10 +20,10 @@ internal class StackTest {
     @DisplayName("Map test")
     fun mapTest() {
         val stack = stackOf(1, 2, 3)
-        stack.map { it * 2 }
-        assertEquals("top -> 6 -> 4 -> 2", stack.toString())
-        stack.map { it + 1 }
-        assertEquals("top -> 7 -> 5 -> 3", stack.toString())
+        val newStack1 = stack.map { it * 2 }
+        assertEquals("top -> 6 -> 4 -> 2", newStack1.toString())
+        val newStack2 = newStack1.map { it + 1 }
+        assertEquals("top -> 7 -> 5 -> 3", newStack2.toString())
     }
 
     @Test
