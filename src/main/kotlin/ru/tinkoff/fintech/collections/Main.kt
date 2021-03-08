@@ -1,39 +1,23 @@
 package ru.tinkoff.fintech.collections
 
 fun main() {
-    demonstrateStackFunctionality()
-    println("-".repeat(50))
-    demonstrateQueueFunctionality()
-}
+    val machineManager = MachineManager()
+    machineManager.fillList()
 
-fun demonstrateStackFunctionality() {
-    println("STACK\n")
-    val stack = stackOf(1, 2, 3)
-    println("Current stack: $stack\n")
-    println("Remove top element (3)")
-    stack.pop()
-    println("Current stack: $stack\n")
-    println("Add 4 to stack")
-    stack += 4 // equivalent for stack.push(4)
-    println("Current stack: $stack\n")
-    println("Get top value of stack: ${stack.peek()}\n")
-    println("Let's double all values")
-    val newStack = stack.map { it * 2 }
-    println("New stack: $newStack\n")
-}
+    val count = machineManager.getCountByPredicate { it.number.contains('5') }
+    println("The quantity of phone numbers which contain digit \"5\": $count")
 
-fun demonstrateQueueFunctionality() {
-    println("\nQUEUE\n")
-    val queue = queueOf(1, 2, 3)
-    println("Current queue: $queue\n")
-    println("Remove front element (1)")
-    queue.dequeue()
-    println("Current queue: $queue\n")
-    println("Add 4 to queue")
-    queue += 4 // equivalent for queue.enqueue(4)
-    println("Current queue: $queue\n")
-    println("Get front value of queue: ${queue.peek()}\n")
-    println("Let's double all values")
-    val newQueue = queue.map { it * 2 }
-    println("New queue: $newQueue\n")
+    println("\nWiFi network tree:")
+    val grouping = machineManager.groupByWiFiNetwork()
+    for ((key, groupContent) in grouping) {
+        println("\n$key:")
+        for (item in groupContent) {
+            println("    $item")
+        }
+    }
+
+    println("\nList sorted by screen width:\n")
+    for (item in machineManager.getSortedList(compareBy{it.screenWidth})) {
+        println(item)
+    }
 }
