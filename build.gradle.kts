@@ -12,8 +12,9 @@ repositories {
 }
 
 dependencies {
-    implementation(group="org.postgresql", name="postgresql", version="42.1.4")
+    implementation("org.junit.jupiter:junit-jupiter:5.4.2")
     testImplementation(kotlin("test-junit"))
+    testImplementation("io.mockk:mockk:1.10.6")
 }
 
 tasks.test {
