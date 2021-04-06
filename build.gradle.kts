@@ -13,6 +13,7 @@ repositories {
 
 dependencies {
     implementation("org.junit.jupiter:junit-jupiter:5.4.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.0")
     testImplementation(kotlin("test-junit"))
     testImplementation("io.mockk:mockk:1.10.6")
 }
