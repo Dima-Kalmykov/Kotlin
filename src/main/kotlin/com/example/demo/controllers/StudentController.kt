@@ -1,5 +1,7 @@
-package com.example.demo
+package com.example.demo.controllers
 
+import com.example.demo.dao.StudentDao
+import com.example.demo.models.Student
 import io.swagger.annotations.ApiOperation
 import io.swagger.annotations.ApiParam
 import io.swagger.annotations.ApiResponse
@@ -7,7 +9,6 @@ import io.swagger.annotations.ApiResponses
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import kotlin.reflect.KClass
 
 @RestController
 @RequestMapping("/student")
@@ -36,7 +37,7 @@ class StudentController {
         val student = studentDao.getById(id)
 
         return if (student == null) {
-            ResponseEntity(HttpStatus.NOT_FOUND);
+            ResponseEntity(HttpStatus.NOT_FOUND)
         } else {
             ResponseEntity(student, HttpStatus.OK)
         }

@@ -1,9 +1,8 @@
-package com.example.demo
+package com.example.demo.dao
 
-import org.springframework.context.annotation.Bean
-import org.springframework.stereotype.Component
+import com.example.demo.models.Student
 
-class StudentDao(
+data class StudentDao(
     private val students: List<Student> = listOf(
         Student("1", "Dima", "Kalmykov", null),
         Student("2", "Nastya", "Baranova", null),

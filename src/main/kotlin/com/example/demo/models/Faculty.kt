@@ -1,6 +1,4 @@
-package com.example.demo
-
-import org.springframework.stereotype.Component
+package com.example.demo.models
 
 data class Faculty(
     val id: String? = null,
