@@ -1,0 +1,29 @@
+version: '3.1'
+
+services:
+  docker-super:
+    container_name: docker-rest-api2
+    image: docker-super:1.0
+    environment:
+      - LOG_LEVEL=${APP_LOG_LEVEL}
+      - JDBC_URL=${APP_JDBC_URL}/${DB_NAME}?currentSchema=${DB_SCHEMA}
+      - JDBC_USER=${DB_ADMIN_USER}
+      - JDBC_PASS=${DB_ADMIN_PASS}
+    depends_on:
+      - docker-rest-db2
+    volumes:
+      - c:/Users/dmkal/docker_data/docker-super/logs:/usr/src/logs
+    ports:
+      - "8085:8081"
+
+  docker-rest-db2:
+    container_name: docker-rest-db2
+    image: postgres:11
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_ADMIN_USER}
+      - POSTGRES_PASSWORD=${DB_ADMIN_PASS}
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./db-init:/docker-entrypoint-initdb.d/

@@ -1,0 +1,61 @@
+version: '3.1'
+
+services:
+  docker-rest:
+    container_name: docker-rest-api
+    image: docker-rest:1.0
+    environment:
+      - LOG_LEVEL=${APP_LOG_LEVEL}
+      - JDBC_URL=${APP_JDBC_URL}/${DB_NAME}?currentSchema=${DB_SCHEMA}
+      - JDBC_USER=${DB_ADMIN_USER}
+      - JDBC_PASS=${DB_ADMIN_PASS}
+    depends_on:
+      - docker-rest-db
+      - docker-super
+    volumes:
+      - c:/Users/dmkal/docker_data/docker-rest/logs:/usr/src/logs
+    ports:
+      - "8084:8080"
+
+  docker-rest-db:
+    container_name: docker-rest-db
+    image: postgres:11
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_ADMIN_USER}
+      - POSTGRES_PASSWORD=${DB_ADMIN_PASS}
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./db-init:/docker-entrypoint-initdb.d/
+
+  docker-super:
+    container_name: docker-rest-api2
+    image: docker-super:1.0
+    environment:
+      - LOG_LEVEL=${APP_LOG_LEVEL}
+      - JDBC_URL=${APP_JDBC_URL2}/db?currentSchema=${DB_SCHEMA}
+      - JDBC_USER=${MYSQL_USER}
+      - JDBC_PASS=${MYSQL_PASSWORD}
+    depends_on:
+      - docker-rest-db2
+    volumes:
+      - c:/Users/dmkal/docker_data/docker-super/logs:/usr/src/logs
+    ports:
+      - "8085:8082"
+
+  docker-rest-db2:
+    container_name: docker-rest-db2
+    image: mysql:8.0.12
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_ADMIN_USER}
+      - POSTGRES_PASSWORD=${DB_ADMIN_PASS}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+#    ports:
+#      - "3306:3306"
+    volumes:
+      - ./db-init2:/docker-entrypoint-initdb.d/
